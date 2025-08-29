@@ -1,41 +1,52 @@
-const myMap = new Map();
-const myMap1 = new Map([
+const m1 = new Map();
+const m2 = new Map([
     ["key1","value1"],
     ["key2","value2"],
-]);
+])
+console.log(m2)
 
-const myMp = new Map();
-myMp.set("name","Alice");
-myMp.set("age",30);
+m1.set("name","alice");
+m1.set("age",30);
+console.log(m1);
+console.log(m1.get('name'))
 
-console.log(myMp);
-console.log(myMp.get("name"));
-console.log(myMp.get("age"));
-console.log(myMp.get("gender")); // undefined
+console.log(m1.has("age"))
 
-const player = new Map([
-    ["key","value"],
-    ["small","medium"],
-]);
-
-console.log(player);
-
-player.forEach((value,key) => {
-    console.log(`${key}:${value}`);
-});
-
-console.log("for...of");
-for (const [key,value] of player) {
-    console.log(`${key}:${value}`);
+for(let key of m1){
+    console.log(key)
 }
 
-player.set("big","large");
-player.set("speed","fast");
+let p = Object.fromEntries([
+    ['b',1],
+    ['o',2],
+    ['m',4]
+])
 
+console.log(p)
+console.log(p.o)
 
-player.delete("small");
+const myset = new Set();
+const m4 = new Set([1,2,3,2,1]);
+console.log(m4)
+myset.add(1);
+myset.add(2);
+myset.add("hello");
+myset.add(1)
+console.log(myset)
+myset.delete("hello");
+console.log(myset)
 
-console.log("After insert and delete:");
-for (const [key,value] of player) {
-    console.log(`${key}:${value}`);
+for(const v of m4){
+    console.log(v)
 }
+
+const abc = new Set(['x','y','z'])
+const entry = abc.entries();
+for(const [k,v] of entry){
+    console.log(k,v)
+}
+
+const s = "helloworld"
+console.log(s.slice(0,-3))
+console.log(s.substring(0,3))
+console.log(s.substr(0,3))
