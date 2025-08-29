@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="button">Try me!</button>
+    <p id="message"></p>
+    <script>
+        const b = document.getElementById("button");
+        const m = document.getElementById("message");
+
+        b.addEventListener("click",()=>{
+            m.textContent = "clicked"
+        })
+        b.addEventListener("mouseover",()=>{
+            m.textContent = "on the button"
+            b.style.background="orange"
+        })
+        b.addEventListener("mouseout",()=>{
+            m.textContent = "out of button"
+            b.style.background="green"
+        })
+    </script>
+</body>
+
+</html>

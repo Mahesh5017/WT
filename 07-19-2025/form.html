@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    a{
+        text-decoration: none;
+        
+    }
+    input{
+        padding-top: 0;
+        margin-top: 0;
+        height: 20px;
+    }
+    .submit{
+        background: #000;
+        color: aliceblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<body>
+    <h1>Registration form</h1>
+    <form onsubmit="registerUser(event)">
+        <p>Username :</p>
+        <input type="text" id="username" placeholder="Enter User name"><br>
+        
+        <p>Email</p>
+        <input type="email" id="email" placeholder="enter email"><br>
+        <p>password :</p>
+        <input type="text" id="password" placeholder="Enter password"><br>
+        
+        <button type="submit" class="submit">Register</button><br>
+
+        <span>already have an account </span><a href="signin.html">signin</a>
+    </form>
+    <script>
+            function registerUser(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const user = {
+                username: username,
+                email: email,
+                password: password
+            };
+
+            localStorage.setItem("user", JSON.stringify(user));
+            alert("Registration successful!");
+            window.location.href = "signin.html";
+        }
+    </script>
+</body>
+</html>

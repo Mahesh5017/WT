@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>color App</title>
+</head>
+<body>
+  <button onclick="changeBG()">Change color</button>
+  <button onclick="change()" id="col">Change color</button>
+
+  <p id="pixel">sample text</p>
+
+  <script>
+     const para  =document.createElement("p");
+     para.innerHTML = "HTos osjibvd ygfbu9y";
+
+     document.body.append(para);
+
+    var a = document.getElementById('pixel')
+    a.style.fontSize ="50px"
+
+    async function changeBG() {
+      const colors = ["red", "blue", "green", "yellow", "orange", "purple", "pink", "cyan", "lime", "magenta"];
+      const randomIndex = Math.floor(Math.random() * colors.length);
+      document.body.style.backgroundColor = colors[randomIndex];
+    }
+    document.getElementById("demo").innerHTML="hello world"
+    function change(){
+        document.getElementById("col").addEventListener('click',function(){
+        this.style.backgroundColor = 'red';
+    });
+}
+    function changetext(){
+        var my_text = document.getElementsByClassName('my');
+        my_text[1].innerHTML = "you uclicked the button!"
+    }
+    function changefont(){
+        
+    }
+  </script>
+
+</body>
+</html>

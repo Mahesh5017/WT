@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    a{
+        text-decoration: none;
+        
+    }
+    input{
+        padding-top: 0;
+        margin-top: 0;
+        height: 20px;
+    }
+    .submit{
+        background: #000;
+        color: aliceblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<body>
+    <h1>Sign in form</h1>
+    <form onsubmit="loginUser(event)">      
+        <p>Email</p>
+        <input type="email" id="email" placeholder="enter email"><br>
+        <p>password :</p>
+        <input type="text" id="password" placeholder="Enter password"><br>
+        
+        <button type="submit" class="submit">Login</button><br>
+
+        <span>Do not have an account </span><a href="form.html">sign up</a>
+    </form>
+<script>
+        let counter = 0;
+        const maxAttempts = 3;
+
+        function loginUser(event) {
+            event.preventDefault();
+            const emailInput = document.getElementById("email").value;
+            const passwordInput = document.getElementById("password").value;
+            const storedUser = JSON.parse(localStorage.getItem("user"));
+
+            if (!storedUser) {
+                alert("No registered user found. Please sign up first.");
+                return;
+            }
+
+            while (counter < maxAttempts) {
+                if (emailInput === storedUser.email && passwordInput === storedUser.password) {
+                    alert("Login successful!");
+                    return;
+                } else {
+                    counter++;
+                    if (counter < maxAttempts) {
+                        alert(`Incorrect email or password. Attempts remaining: ${maxAttempts - counter}`);
+                        return;
+                    } else {
+                        alert("You have used all 3 login attempts. Login disabled.");
+                        document.querySelector("button").disabled = true;
+                        return;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

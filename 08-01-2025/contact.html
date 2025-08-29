@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+</head>
+<body>
+    <h1>Contact Form</h1>
+    <label>Username: </label>
+    <input type="text" placeholder="Enter username" id="UserName"><br>
+    <label>Email</label>
+    <input type="email" id="UserEmail" placeholder="Enter email"><br>
+    <label>Address:</label>
+    <textarea id="Address" placeholder="Enter address"></textarea><br>
+    <button id="button" onclick="save()">
+        Submit
+    </button>
+    <hr>
+    <h4>Entered :</h4>
+    <p id="name"></p>
+    <p id="email"></p>
+    <p id="add"></p>
+
+    <script>
+        function save() {
+            const a = document.getElementById("UserName").value;
+            const b = document.getElementById("UserEmail").value;
+            const c = document.getElementById("Address").value;
+
+            document.getElementById("name").innerText = "Name: " + a;
+            document.getElementById("email").innerText = "Email: " + b;
+            document.getElementById("add").innerText = "Address: " + c;
+        }
+    </script>
+</body>
+</html>

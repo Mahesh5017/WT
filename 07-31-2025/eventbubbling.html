@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="inp">
+    <p id="text"></p>
+    <p id="text1"></p>
+    <p id="window"></p>
+    <div style="height: 2000px" id="scroll"></div>
+    <script>
+        const i = document.getElementById("inp");
+        const p = document.getElementById("text")
+        const p1 = document.getElementById("text1")
+        
+        function logEvent(text){
+            document.getElementById("scroll").innerHTML=text;
+        }
+        i.addEventListener('input',(e)=>{
+            p.innerHTML=e.target.value;
+        })
+        i.addEventListener('input',(e)=>{
+            p1.innerHTML=`pressed: ${e.data}`;
+        })
+        window.addEventListener("resize",()=>{
+            document.getElementById("window").innerText="Window resized :"+window.innerWidth+"x"+window.innerHeight;
+        })
+        window.addEventListener('scroll',()=>{
+            logEvent(`Page scrolled. ScrollY: ${window.scrollY}px: ScrollX: ${window.scrollX}`)
+        })
+    </script>
+</body>
+</html>

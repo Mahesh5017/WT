@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Limit Form</title>
+</head>
+<body>
+    <p>Form</p>
+    <textarea id="message" class="message" placeholder="Enter the message (max 20 characters)"></textarea>
+    <div id="counter">20 / 20</div>
+    <button type="submit" id="submit">Submit</button>
+
+    <script>
+        const message = document.getElementById("message");
+        const submitButton = document.getElementById("submit");
+        const counter = document.getElementById("counter");
+
+        message.addEventListener("input", () => {
+            const length = message.value.length;
+            counter.innerHTML = `${20-length} / 20`;
+
+            if (message.value.length > 20) {
+                submitButton.disabled = true;     
+            } else {
+                submitButton.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
