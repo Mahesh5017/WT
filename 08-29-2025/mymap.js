@@ -39,3 +39,4 @@ console.log("After insert and delete:");
 for (const [key,value] of player) {
     console.log(`${key}:${value}`);
 }
+
