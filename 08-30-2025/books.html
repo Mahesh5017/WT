@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Table</title>
+</head>
+<body>
+    <h1>Books Table</h1>
+    <table id="table" border="1" cellspacing="0" cellpadding="8">
+        <thead>
+            <tr>
+                <th>Author</th>
+                <th>Country</th>
+                <th>Image Link</th>
+                <th>Language</th>
+            </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+    </table>
+
+    <script>
+        async function fun() {
+            try {
+                const res = await fetch("books.json");
+                if (!res.ok) throw new Error("Failed to fetch books.json");
+                const books = await res.json();
+                const tbody = document.getElementById('table-body');
+
+                function createCell(text) {
+                    const td = document.createElement('td');
+                    td.innerText = text;
+                    return td;
+                }
+
+                for (let book of books) {
+                    const row = document.createElement('tr');
+                    row.append(
+                        createCell(book.author),
+                        createCell(book.country),
+                        createCell(book.imageLink),
+                        createCell(book.language)
+                    );
+                    tbody.append(row);
+                }
+            } catch (err) {
+                console.error("Error:", err);
+            }
+        }
+        fun();
+    </script>
+</body>
+</html>

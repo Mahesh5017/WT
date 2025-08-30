@@ -26,6 +26,11 @@ async function Fetchwithabort(){
 
             recieved = decoder.decode(value,{stream:true});
             console.log("chunk recieved :",recieved.slice(0,100)+"...");
+
+            if(recieved.length>50){
+                console.log("Aborting !!");
+                controller.abort();
+            }
         }
     }catch(e){
         console.log("error:",e)
