@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="Get data from json" onclick="func()"/>
+    <br /><br />
+
+    <script>
+        function func() {
+            fetch("books.json")
+                .then((res) => res.json())
+                .then((data) => {
+                    const tab = document.createElement("table");
+                    const tblbody = document.createElement("tbody");
+
+                    for (let book of data) {
+                        const row = document.createElement("tr");
+                        let keys = Object.keys(book);
+
+                        for (let k of keys) {
+                            const cell = document.createElement("td");
+                            const celltext = document.createTextNode(book[k]);
+                            cell.appendChild(celltext);
+                            row.appendChild(cell);
+                        }
+                        tblbody.appendChild(row);
+                    }
+
+                    tab.appendChild(tblbody);
+                    document.body.appendChild(tab);
+                    tab.setAttribute("border", "2");
+                });
+        }
+    </script>
+</body>
+</html>
